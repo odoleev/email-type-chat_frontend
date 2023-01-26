@@ -11,7 +11,7 @@ export function SendMessageContent() {
   const [form] = Form.useForm();
   const { users, username } = useTypedSelector((state) => state.usersReducer);
   const { sentMessages } = useTypedSelector((state) => state.messagesReducer);
-  const { getUsers, getSent, sendMessage} = useActions();
+  const { getUsers, getSent, sendMessage } = useActions();
   const [isRecipientSelected, setIsRecipientSelected] =
     useState<boolean>(false);
 
@@ -51,6 +51,11 @@ export function SendMessageContent() {
       if (!values.text) {
         setTextAlert(true);
       }
+      return;
+    }
+
+    if (!values.text) {
+      setTextAlert(true);
       return;
     }
 

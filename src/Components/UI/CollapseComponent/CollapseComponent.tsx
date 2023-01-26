@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckCircleTwoTone, MessageTwoTone } from '@ant-design/icons';
 import { Collapse } from 'antd';
 import { IMessage } from '../../../types/messages.types';
-import { PanelHeader } from '../PanelHeader';
+import { PanelEnum, PanelHeader } from '../PanelHeader';
 import { ICollapse } from './types';
 import { dateConverter } from '../../../utils/dateConverter';
 
@@ -16,7 +16,11 @@ export function CollapseComponent({ type, messages, onChange }: ICollapse) {
           header={
             <PanelHeader
               type={type}
-              name={message.recipient}
+              name={
+                type === PanelEnum.RECIPIENT
+                  ? message.recipient
+                  : message.sender
+              }
               theme={message.theme}
             />
           }
